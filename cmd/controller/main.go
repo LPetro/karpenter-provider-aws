@@ -32,6 +32,15 @@ import (
 func main() {
 	ctx, op := operator.NewOperator(coreoperator.NewOperator())
 
+	// Here's maybe a good spot to log all the initial stuff?
+	// fmt.Printf("Inputs to awsCloudProvider New:\n")
+	// fmt.Printf("  Instance Types Provider: %++v\n", op.InstanceTypesProvider)
+	// fmt.Printf("  Instance Provider: %++v\n", op.InstanceProvider)
+	// fmt.Printf("  Event Recorder: %++v\n", op.EventRecorder)
+	// fmt.Printf("  Client: %++v\n", op.GetClient())
+	// fmt.Printf("  AMI Provider: %++v\n", op.AMIProvider)
+	// fmt.Printf("  Security Group Provider: %++v\n", op.SecurityGroupProvider)
+
 	awsCloudProvider := cloudprovider.New(
 		op.InstanceTypesProvider,
 		op.InstanceProvider,

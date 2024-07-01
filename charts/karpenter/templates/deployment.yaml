@@ -191,6 +191,8 @@ spec:
           {{- if .Values.logConfig.enabled }}
             - name: config-logging
               mountPath: /etc/karpenter/logging
+            - name: persistent-storage
+              mountPath: /data
           {{- end }}
           {{- with .Values.controller.extraVolumeMounts }}
             {{- toYaml . | nindent 12 }}
@@ -234,6 +236,9 @@ spec:
         - name: config-logging
           configMap:
             name: config-logging
+        - name: persistent-storage
+          persistentVolumeClaim:
+            claimName: s3-claim
       {{- end }}
       {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 8 }}
