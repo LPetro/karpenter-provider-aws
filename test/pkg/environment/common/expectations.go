@@ -687,26 +687,6 @@ func (env *Environment) EventuallyExpectNodeClaimsReady(nodeClaims ...*karpv1.No
 	}).Should(Succeed())
 }
 
-func (env *Environment) EventuallyExpectExpired(nodeClaims ...*corev1beta1.NodeClaim) {
-	GinkgoHelper()
-	Eventually(func(g Gomega) {
-		for _, nc := range nodeClaims {
-			g.Expect(env.Client.Get(env, client.ObjectKeyFromObject(nc), nc)).To(Succeed())
-			// g.Expect(nc.StatusConditions().Get(corev1beta1.ConditionTypeExpired).IsTrue()).To(BeTrue())
-		}
-	}).Should(Succeed())
-}
-
-func (env *Environment) EventuallyExpectDrifted(nodeClaims ...*karpv1.NodeClaim) {
-	GinkgoHelper()
-	Eventually(func(g Gomega) {
-		for _, nc := range nodeClaims {
-			g.Expect(env.Client.Get(env, client.ObjectKeyFromObject(nc), nc)).To(Succeed())
-			g.Expect(nc.StatusConditions().Get(karpv1.ConditionTypeDrifted).IsTrue()).To(BeTrue())
-		}
-	}).Should(Succeed())
-}
-
 func (env *Environment) ConsistentlyExpectNodeClaimsNotDrifted(duration time.Duration, nodeClaims ...*karpv1.NodeClaim) {
 	GinkgoHelper()
 	nodeClaimNames := lo.Map(nodeClaims, func(nc *karpv1.NodeClaim, _ int) string { return nc.Name })
