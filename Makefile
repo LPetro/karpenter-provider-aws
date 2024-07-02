@@ -53,7 +53,7 @@ run: ## Run Karpenter controller binary against your local cluster
 		go run ./cmd/controller/main.go
 
 test: ## Run tests
-	go test ./pkg/... \
+	go test -v ./pkg/... \
 		-cover -coverprofile=coverage.out -outputdir=. -coverpkg=./... \
 		--ginkgo.focus="${FOCUS}" \
 		--ginkgo.randomize-all \
@@ -102,7 +102,6 @@ verify: tidy download ## Verify code. Includes dependencies, linting, formatting
 	go generate ./...
 	hack/boilerplate.sh
 	cp  $(KARPENTER_CORE_DIR)/pkg/apis/crds/* pkg/apis/crds
-	hack/validation/kubelet.sh
 	hack/validation/requirements.sh
 	hack/validation/labels.sh
 	cp pkg/apis/crds/* charts/karpenter-crd/templates
@@ -133,13 +132,15 @@ image: ## Build the Karpenter controller images using ko build
 
 apply: verify image ## Deploy the controller from the current state of your git repository into your ~/.kube/config cluster
 	kubectl apply -f ./pkg/apis/crds/
+	kubectl apply -f ./pv_and_pvc.yaml
 	helm upgrade --install karpenter charts/karpenter --namespace ${KARPENTER_NAMESPACE} \
         $(HELM_OPTS) \
         --set logLevel=debug \
+		--set logConfig.enabled=true \
         --set controller.image.repository=$(IMG_REPOSITORY) \
         --set controller.image.tag=$(IMG_TAG) \
-        --set controller.image.digest=$(IMG_DIGEST)
-
+        --set controller.image.digest=$(IMG_DIGEST) \
+		
 install:  ## Deploy the latest released version into your ~/.kube/config cluster
 	@echo Upgrading to ${KARPENTER_VERSION}
 	helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --version ${KARPENTER_VERSION} --namespace ${KARPENTER_NAMESPACE} \

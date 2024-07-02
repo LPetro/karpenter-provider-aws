@@ -58,17 +58,17 @@ spec:
       {{- end }}
       containers:
         - name: controller
-          securityContext:
-            runAsUser: 65532
-            runAsGroup: 65532
-            runAsNonRoot: true
-            seccompProfile:
-              type: RuntimeDefault
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            readOnlyRootFilesystem: true
+          # securityContext:
+          #   runAsUser: 65532
+          #   runAsGroup: 65532
+          #   runAsNonRoot: false
+          #   seccompProfile:
+          #     type: RuntimeDefault
+          #   allowPrivilegeEscalation: true #for the time being
+          #   capabilities:
+          #     drop:
+          #       - ALL
+          #   readOnlyRootFilesystem: true
           image: {{ include "karpenter.controller.image" . }}
           imagePullPolicy: {{ .Values.imagePullPolicy }}
           env:
@@ -180,6 +180,12 @@ spec:
           {{- end }}
         {{- if .Values.controller.extraVolumeMounts }}
           volumeMounts:
+          {{- if .Values.logConfig.enabled }}
+            - name: config-logging
+              mountPath: /etc/karpenter/logging
+            - name: persistent-storage
+              mountPath: /data
+          {{- end }}
           {{- with .Values.controller.extraVolumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
@@ -218,6 +224,14 @@ spec:
       {{- end }}
     {{- if .Values.extraVolumes }}
       volumes:
+      {{- if .Values.logConfig.enabled }}
+        - name: config-logging
+          configMap:
+            name: config-logging
+        - name: persistent-storage
+          persistentVolumeClaim:
+            claimName: s3-claim
+      {{- end }}
       {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
