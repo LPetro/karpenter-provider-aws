@@ -4,19 +4,19 @@ go 1.22.4
 
 require (
 	github.com/aws/karpenter-provider-aws v0.37.1-0.20240607201537-69a807081c7f
-	github.com/samber/lo v1.39.0
-	k8s.io/api v0.30.1
-	k8s.io/client-go v0.30.1
-	sigs.k8s.io/controller-runtime v0.18.3
+	github.com/samber/lo v1.44.0
+	k8s.io/api v0.30.2
+	k8s.io/client-go v0.30.2
+	sigs.k8s.io/controller-runtime v0.18.4
 	sigs.k8s.io/karpenter v0.37.1-0.20240605225346-c7c5068db687
 )
 
 require (
 	contrib.go.opencensus.io/exporter/ocagent v0.7.1-0.20200907061046-05415f1de66d // indirect
 	contrib.go.opencensus.io/exporter/prometheus v0.4.2 // indirect
-	github.com/aws/aws-sdk-go v1.53.14 // indirect
+	github.com/aws/aws-sdk-go v1.54.15 // indirect
 	github.com/awslabs/amazon-eks-ami/nodeadm v0.0.0-20240229193347-cfab22a10647 // indirect
-	github.com/awslabs/operatorpkg v0.0.0-20240605172541-88cf99023fa4 // indirect
+	github.com/awslabs/operatorpkg v0.0.0-20240701195752-116cbcffbcb4 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/blang/semver/v4 v4.0.0 // indirect
 	github.com/blendle/zapdriver v1.3.1 // indirect
@@ -63,19 +63,20 @@ require (
 	github.com/prometheus/procfs v0.12.0 // indirect
 	github.com/prometheus/statsd_exporter v0.24.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
+	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.uber.org/automaxprocs v1.5.3 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	golang.org/x/exp v0.0.0-20231006140011-7918f672742d // indirect
+	golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f // indirect
 	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/oauth2 v0.18.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/term v0.20.0 // indirect
-	golang.org/x/text v0.15.0 // indirect
+	golang.org/x/text v0.16.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	gomodules.xyz/jsonpatch/v2 v2.4.0 // indirect
 	google.golang.org/api v0.146.0 // indirect
@@ -87,14 +88,14 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/apiextensions-apiserver v0.30.1 // indirect
-	k8s.io/apimachinery v0.30.1 // indirect
-	k8s.io/cloud-provider v0.30.1 // indirect
-	k8s.io/component-base v0.30.1 // indirect
-	k8s.io/csi-translation-lib v0.30.1 // indirect
-	k8s.io/klog/v2 v2.120.1 // indirect
+	k8s.io/apiextensions-apiserver v0.30.2 // indirect
+	k8s.io/apimachinery v0.30.2 // indirect
+	k8s.io/cloud-provider v0.30.2 // indirect
+	k8s.io/component-base v0.30.2 // indirect
+	k8s.io/csi-translation-lib v0.30.2 // indirect
+	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20240228011516-70dd3763d340 // indirect
-	k8s.io/utils v0.0.0-20240102154912-e7106e64919e // indirect
+	k8s.io/utils v0.0.0-20240502163921-fe8a2dddb1d0 // indirect
 	knative.dev/pkg v0.0.0-20231010144348-ca8c009405dd // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1 // indirect
