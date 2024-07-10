@@ -68,6 +68,7 @@ var awsEnv *test.Environment
 var prov *provisioning.Provisioner
 var cloudProvider *cloudprovider.CloudProvider
 var cluster *state.Cluster
+var queue *orbbatcher.Queue
 var fakeClock *clock.FakeClock
 var recorder events.Recorder
 
@@ -88,7 +89,8 @@ var _ = BeforeSuite(func() {
 	cloudProvider = cloudprovider.New(awsEnv.InstanceTypesProvider, awsEnv.InstanceProvider, recorder,
 		env.Client, awsEnv.AMIProvider, awsEnv.SecurityGroupProvider)
 	cluster = state.NewCluster(fakeClock, env.Client)
-	prov = provisioning.NewProvisioner(env.Client, recorder, cloudProvider, cluster)
+	queue = orbbatcher.NewQueue()
+	prov = provisioning.NewProvisioner(env.Client, recorder, cloudProvider, cluster, queue)
 })
 
 var _ = AfterSuite(func() {
