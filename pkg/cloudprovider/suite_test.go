@@ -49,7 +49,7 @@ import (
 
 	corev1beta1 "sigs.k8s.io/karpenter/pkg/apis/v1beta1"
 	corecloudproivder "sigs.k8s.io/karpenter/pkg/cloudprovider"
-	"sigs.k8s.io/karpenter/pkg/controllers/orb/orbbatcher"
+	"sigs.k8s.io/karpenter/pkg/controllers/orb"
 	"sigs.k8s.io/karpenter/pkg/controllers/provisioning"
 	"sigs.k8s.io/karpenter/pkg/controllers/state"
 	"sigs.k8s.io/karpenter/pkg/events"
@@ -70,7 +70,7 @@ var awsEnv *test.Environment
 var prov *provisioning.Provisioner
 var cloudProvider *cloudprovider.CloudProvider
 var cluster *state.Cluster
-var SIHeap *orbbatcher.SchedulingInputHeap
+var SIHeap *orb.SchedulingInputHeap
 var fakeClock *clock.FakeClock
 var recorder events.Recorder
 
@@ -91,7 +91,7 @@ var _ = BeforeSuite(func() {
 	cloudProvider = cloudprovider.New(awsEnv.InstanceTypesProvider, awsEnv.InstanceProvider, recorder,
 		env.Client, awsEnv.AMIProvider, awsEnv.SecurityGroupProvider)
 	cluster = state.NewCluster(fakeClock, env.Client)
-	SIHeap = orbbatcher.NewSchedulingInputHeap()
+	SIHeap = orb.NewSchedulingInputHeap()
 	prov = provisioning.NewProvisioner(env.Client, recorder, cloudProvider, cluster, SIHeap)
 })
 
