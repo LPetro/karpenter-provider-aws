@@ -81,6 +81,7 @@ var fakeClock *clock.FakeClock
 var prov *provisioning.Provisioner
 var cluster *state.Cluster
 var SIHeap *orb.SchedulingInputHeap
+var SMHeap *orb.SchedulingMetadataHeap
 var cloudProvider *cloudprovider.CloudProvider
 
 func TestAWS(t *testing.T) {
@@ -101,7 +102,8 @@ var _ = BeforeSuite(func() {
 		env.Client, awsEnv.AMIProvider, awsEnv.SecurityGroupProvider)
 	cluster = state.NewCluster(fakeClock, env.Client)
 	SIHeap = orb.NewSchedulingInputHeap()
-	prov = provisioning.NewProvisioner(env.Client, events.NewRecorder(&record.FakeRecorder{}), cloudProvider, cluster, SIHeap)
+	SMHeap = orb.NewSchedulingMetadataHeap()
+	prov = provisioning.NewProvisioner(env.Client, events.NewRecorder(&record.FakeRecorder{}), cloudProvider, cluster, SIHeap, SMHeap)
 })
 
 var _ = AfterSuite(func() {
