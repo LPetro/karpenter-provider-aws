@@ -33,3 +33,6 @@ go mod edit -replace sigs.k8s.io/karpenter=github.com/LPetro/karpenter@"$commit_
 
 # Tidy the go modules
 go mod tidy
+
+# Apply the changes
+make apply
