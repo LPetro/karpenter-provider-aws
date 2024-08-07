@@ -47,7 +47,7 @@ import (
 	"github.com/aws/karpenter-provider-aws/pkg/test"
 
 	karpv1 "sigs.k8s.io/karpenter/pkg/apis/v1"
-	corecloudproivder "sigs.k8s.io/karpenter/pkg/cloudprovider"
+	corecloudprovider "sigs.k8s.io/karpenter/pkg/cloudprovider"
 	"sigs.k8s.io/karpenter/pkg/controllers/orb"
 	"sigs.k8s.io/karpenter/pkg/controllers/provisioning"
 	"sigs.k8s.io/karpenter/pkg/controllers/state"
