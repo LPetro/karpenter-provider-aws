@@ -37,8 +37,8 @@ contrib.go.opencensus.io/exporter/prometheus v0.4.2/go.mod h1:dvEHbiKmgvbr5pjaF9
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
-github.com/LPetro/karpenter v0.0.0-20240806021126-a3400311017d h1:85mHC0Lugq5PV1KpesUi3ey14EcfClp/10nh7+31FKU=
-github.com/LPetro/karpenter v0.0.0-20240806021126-a3400311017d/go.mod h1:N+FC1CvXM4PhFxBsUwKz6XChqwlLTr19tBEa5pyw5Sc=
+github.com/LPetro/karpenter v0.0.0-20240806232547-7f1f64063106 h1:UdffDG6RXaiRUvOxtLa1/BDDyDZj9F9mpTOHTBfiQXs=
+github.com/LPetro/karpenter v0.0.0-20240806232547-7f1f64063106/go.mod h1:N+FC1CvXM4PhFxBsUwKz6XChqwlLTr19tBEa5pyw5Sc=
 github.com/Masterminds/semver/v3 v3.2.1 h1:RN9w6+7QoMeJVGyfmbcgs28Br8cvmnucEXnY0rYXWg0=
 github.com/Masterminds/semver/v3 v3.2.1/go.mod h1:qvl/7zhW3nngYb5+80sSMF+FG2BjYrf8m9wsX0PNOMQ=
 github.com/Pallinder/go-randomdata v1.2.0 h1:DZ41wBchNRb/0GfsePLiSwb0PHZmT67XY00lCDlaYPg=
