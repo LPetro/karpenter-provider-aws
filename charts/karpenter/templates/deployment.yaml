@@ -178,18 +178,9 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-        {{- if .Values.controller.extraVolumeMounts }}
           volumeMounts:
-          {{- if .Values.logConfig.enabled }}
-            - name: config-logging
-              mountPath: /etc/karpenter/logging
             - name: persistent-storage
               mountPath: /data
-          {{- end }}
-          {{- with .Values.controller.extraVolumeMounts }}
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-        {{- end }}
         {{- with .Values.controller.sidecarContainer }}
           {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -224,14 +215,6 @@ spec:
       {{- end }}
     {{- if .Values.extraVolumes }}
       volumes:
-      {{- if .Values.logConfig.enabled }}
-        - name: config-logging
-          configMap:
-            name: config-logging
-        - name: persistent-storage
-          persistentVolumeClaim:
-            claimName: s3-claim
-      {{- end }}
       {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 8 }}
       {{- end }}

@@ -136,8 +136,9 @@ apply: image ## Deploy the controller from the current state of your git reposit
 	helm upgrade --install karpenter charts/karpenter --namespace ${KARPENTER_NAMESPACE} \
         $(HELM_OPTS) \
         --set logLevel=debug \
-		--set logConfig.enabled=true \
-        --set controller.image.repository=$(IMG_REPOSITORY) \
+		--set extraVolumes[0].name=persistent-storage \
+		--set extraVolumes[0].persistentVolumeClaim.claimName=s3-claim \
+		--set controller.image.repository=$(IMG_REPOSITORY) \
         --set controller.image.tag=$(IMG_TAG) \
         --set controller.image.digest=$(IMG_DIGEST) \
 		
