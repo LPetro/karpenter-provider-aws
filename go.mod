@@ -32,7 +32,7 @@ require (
 	k8s.io/utils v0.0.0-20240502163921-fe8a2dddb1d0
 	knative.dev/pkg v0.0.0-20231010144348-ca8c009405dd
 	sigs.k8s.io/controller-runtime v0.18.4
-	sigs.k8s.io/karpenter v0.37.1-0.20240718003825-68561e8a62ad
+	sigs.k8s.io/karpenter v0.37.1-0.20240709230514-703d8758ac5e
 	sigs.k8s.io/yaml v1.4.0
 )
 
@@ -118,4 +118,4 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1 // indirect
 )
 
-replace sigs.k8s.io/karpenter => github.com/LPetro/karpenter v0.0.0-20240720022519-94cefad41d13
+replace sigs.k8s.io/karpenter => github.com/LPetro/karpenter v0.0.0-20240806232547-7f1f64063106

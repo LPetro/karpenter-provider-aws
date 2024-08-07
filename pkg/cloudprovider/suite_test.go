@@ -69,8 +69,8 @@ var awsEnv *test.Environment
 var prov *provisioning.Provisioner
 var cloudProvider *cloudprovider.CloudProvider
 var cluster *state.Cluster
-var SIHeap *orb.SchedulingInputHeap
-var SMHeap *orb.SchedulingMetadataHeap
+var schedulingInputHeap *orb.SchedulingInputHeap
+var schedulingMetadataHeap *orb.SchedulingMetadataHeap
 var fakeClock *clock.FakeClock
 var recorder events.Recorder
 
@@ -91,9 +91,9 @@ var _ = BeforeSuite(func() {
 	cloudProvider = cloudprovider.New(awsEnv.InstanceTypesProvider, awsEnv.InstanceProvider, recorder,
 		env.Client, awsEnv.AMIProvider, awsEnv.SecurityGroupProvider)
 	cluster = state.NewCluster(fakeClock, env.Client)
-	SIHeap = orb.NewSchedulingInputHeap()
-	SMHeap = orb.NewSchedulingMetadataHeap()
-	prov = provisioning.NewProvisioner(env.Client, recorder, cloudProvider, cluster, SIHeap, SMHeap)
+	schedulingInputHeap = orb.NewMinHeap[orb.SchedulingInput]()
+	schedulingMetadataHeap = orb.NewMinHeap[orb.SchedulingMetadata]()
+	prov = provisioning.NewProvisioner(env.Client, recorder, cloudProvider, cluster, schedulingInputHeap, schedulingMetadataHeap)
 })
 
 var _ = AfterSuite(func() {
